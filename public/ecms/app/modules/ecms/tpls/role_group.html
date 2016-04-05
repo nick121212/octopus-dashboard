@@ -1,0 +1,29 @@
+<md-dialog aria-label="formCtl.title" class="flex-sm-100 flex-80">
+    <md-toolbar md-theme="dark">
+        <div class="md-toolbar-tools">
+            <h2>{{formCtl.title}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="close" ng-hide="formCtl.isBusy" ng-click="formCtl.close()">
+                <ng-md-icon icon="close"></ng-md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content flex layout="column">
+        <md-progress-linear ng-if="formCtl.isBusy" md-mode="indeterminate"></md-progress-linear>
+        <md-content flex>
+            <md-list layout-padding>
+                <md-list-item ng-repeat="group in formCtl.groups" ng-click="formCtl.toggleAction(group)" layout="row">
+                    <span>{{ group.title }}</span>
+                    <span flex>--------{{ group.description }}</span>
+                    <ng-md-icon ng-show="formCtl.checked(group)" icon="done"></ng-md-icon>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-disabled="formCtl.isBusy" aria-label="formCtl.title" ng-click="formCtl.submitNoForm()">
+            决定了
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

@@ -1,0 +1,34 @@
+<md-content flex layout="column">
+    <md-list>
+        <md-subheader class="md-no-sticky">用户设置</md-subheader>
+        <md-list-item ng-click="homeRightCtl.doEditPsw($event)">
+            <ng-md-icon icon="lock_outline"></ng-md-icon>
+            <p>修改密码</p>
+        </md-list-item>
+        <md-list-item ng-click="homeRightCtl.doSetAliasName($event)">
+            <ng-md-icon icon="perm_identity"></ng-md-icon>
+            <p>设置昵称 {{ $root.user.nickname }}</p>
+        </md-list-item>
+        <md-list-item ng-click="homeRightCtl.doSetMobile($event)">
+            <ng-md-icon icon="phone_iphone"></ng-md-icon>
+            <p>绑定手机 {{ $root.user.mobile }}</p>
+        </md-list-item>
+        <md-list-item ng-click="homeRightCtl.doSetEmail($event)">
+            <ng-md-icon icon="email"></ng-md-icon>
+            <p>绑定邮箱 {{ $root.user.email }}</p>
+        </md-list-item>
+        <md-divider></md-divider>
+    </md-list>
+</md-content>
+
+<md-divider></md-divider>
+<div layout="row" layout-align="start center">
+    <!--<h4 style="padding-left:10px;" flex>上海萌义网络科技有限公司</h4>-->
+    <md-button ng-click="homeRightCtl.doExit($event)" flex class="md-warn">
+        <md-tooltip>
+            退出
+        </md-tooltip>
+        <ng-md-icon icon="settings_power"></ng-md-icon>
+        退出
+    </md-button>
+</div>

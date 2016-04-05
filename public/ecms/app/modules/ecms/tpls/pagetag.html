@@ -1,0 +1,11 @@
+<md-content layout="column" md-theme="dark" flex>
+    <ng-include src="'ecms/app/modules/page/tpls/toolbar.html'"></ng-include>
+    <md-divider></md-divider>
+    <md-content layout="column" layout-padding flex>
+        <form name="newForm" layout="column" sf-schema="managerCtl.saveAction.dataSchema" sf-form="managerCtl.saveAction.formSchema.form"
+        sf-model="managerCtl.clientData">
+            
+        </form>
+        <span ng-init="managerCtl.$form=this.newForm;" ></span>
+    </md-content>
+</md-content>

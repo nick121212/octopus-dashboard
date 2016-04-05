@@ -1,0 +1,36 @@
+<!--表格数据-->
+<md-content layout="row" flex>
+    <md-content flex layout="column" md-theme="dark">
+        <ng-include src="'ecms/app/modules/page/tpls/toolbar.html'"></ng-include>
+        <md-divider></md-divider>
+        <md-table-container flex>
+            <table md-table flex class="md-table" ng-model="managerCtl.selected" flex md-progress="managerCtl.deferred">
+                <thead md-head md-order="managerCtl.queryData.order" md-content="managerCtl" md-trigger="managerCtl.onOrderChange">
+                    <tr md-row>
+                        <th md-column ng-repeat="column in managerCtl.columns">
+                            {{::column.name}}
+                        </th>
+                        <th md-column ng-if="managerCtl.itemToolbars.length"></th>
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr md-row md-auto-select ng-repeat="item in managerCtl.clientData.datas">
+                        <td md-cell ng-repeat="column in managerCtl.columns">
+                            <span dy-compile $index="$parent.$index+1" query="managerCtl.queryData" item="item" html="{{column.template}}"></span>
+                        </td>
+                        <td md-cell>
+                            <gridmenu aria-label="打开菜单" ng-if="managerCtl.itemToolbars.length" tools="managerCtl.itemToolbars" item="item" is-busy="managerCtl.isBusy"
+                            open-menu="managerCtl.material.openMenu"></gridmenu>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+        <!--分页数据-->
+        <md-table-pagination class="md-table-pagination" flex="none" md-limit="managerCtl.queryData.limit" md-page="managerCtl.queryData.page"
+        md-options="managerCtl.rowSelect" md-on-paginate="managerCtl.onPageChangeBind" md-total="{{managerCtl.clientData.total}}">
+        </md-table-pagination>
+    </md-content>
+    <ng-include class="md-whiteframe-z2 am-fade-and-slide-right" ng-show="!!managerCtl.searchMode" layout="column" flex-gt-sm="30"
+    flex="100" src="'ecms/app/modules/page/tpls/search.html'"></ng-include>
+</md-content>
