@@ -1,0 +1,30 @@
+<md-toolbar ui-view="toolbar_main" md-theme="dark" layout="row" class="md-whiteframe-glow-z1">
+    <div class="md-toolbar-tools">
+        <md-button aria-label="打开菜单" ng-click="homeIndexCtl.doOpenMenu($event)">
+            <div layout="row">
+                <ng-md-icon icon="windows"></ng-md-icon>
+                <h2 layout-padding>{{ $root.title }}</h2>
+            </div>
+        </md-button>
+        <span flex></span>
+        <div class="md-toolbar-item" layout="row">
+            <md-button aria-label="打开菜单" ng-click="homeIndexCtl.doOpenRightMenu($event)">
+                <md-tooltip>
+                    菜单
+                </md-tooltip>
+                <div layout="row">
+                    <ng-md-icon icon="more_vert"></ng-md-icon>
+                    {{ $root.user.nickname }}
+                </div>
+            </md-button>
+        </div>
+    </div>
+</md-toolbar>
+<md-content layout="row" flex>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" ui-view="sidenav_left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+    </md-sidenav>
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right" ui-view="sidenav_right" layout="column">
+    </md-sidenav>
+    <md-content layout="column" flex class="slide-right noneleave" ui-view="content_main">
+    </md-content>
+</md-content>

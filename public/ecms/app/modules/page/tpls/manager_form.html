@@ -1,0 +1,23 @@
+<md-dialog aria-label="formCtl.title" md-theme="dark" flex-gt-sm="80" flex="100">
+    <md-toolbar md-theme="dark">
+        <div class="md-toolbar-tools">
+            <h2>{{::formCtl.title}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="close" ng-hide="formCtl.isBusy" ng-click="formCtl.close()">
+                <ng-md-icon icon="close"></ng-md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <!--{{formCtl.formData}}-->
+    <md-dialog-content flex class="md-padding">
+        <md-progress-linear ng-if="formCtl.isBusy" md-mode="indeterminate"></md-progress-linear>
+        <form name="newForm" layout="column" sf-schema="formCtl.schema" sf-form="formCtl.form" sf-model="formCtl.formData">
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-disabled="formCtl.isBusy" aria-label="formCtl.title" ng-click="formCtl.submit(newForm)">
+            {{ ::formCtl.title }}
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

@@ -1,0 +1,16 @@
+<md-input-container class="schema-form-input md-block" 
+                    md-is-error="ngModel.$error && ngModel.$invalid"
+                    ng-class="::form.htmlClass" sf-layout aria-label="{{ ::form.title }}">
+    <md-icon ng-if="form.icon">
+        <ng-md-icon style="{{form.icon.style}}" icon="{{ form.icon.icon }}"></ng-md-icon>
+    </md-icon>
+    <label ng-show="showTitle()">{{::form.title}}</label>
+    <input sf-field-model ng-model="$$value$$" schema-validate="form" type="{{form.type}}" aria-label="{{ form.title }}" ng-class="::form.fieldHtmlClass"
+    ng-disabled="form.readonly" name="{{form.key|sfCamelKey}}">
+
+    <div ng-messages="ngModel.$error" aria-live="assertive">
+        <div sf-message ng-message></div>
+    </div>
+    <div class="md-char-counter">{{ form.description }}</div>
+
+</md-input-container>

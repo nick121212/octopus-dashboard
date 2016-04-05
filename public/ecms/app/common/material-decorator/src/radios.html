@@ -1,0 +1,21 @@
+<div class="form-group schema-form-radios {{form.htmlClass}}">
+    <label class="control-label" ng-show="showTitle()" aria-label="{{form.title}}">
+        {{form.title}}
+    </label>
+    <md-radio-group sf-field-model
+                    sf-changed="form"
+                    ng-disabled="form.readonly"
+                    name="{{form.key.join('.')}}">
+        <md-radio-button ng-repeat="item in form.titleMap"
+                         ng-value="item.value"
+                         class="{{form.fieldHtmlClass}}"
+                         sf-field-model="ng-class"
+                         ng-class="{ active: item.value === $$value$$ }">
+            <span ng-bind-html="item.name"></span>
+        </md-radio-button>
+    </md-radio-group>
+    <div ng-messages="ngModel.$error" class="md-input-messages-animation">
+        <div sf-message ng-message></div>
+    </div>
+    <div class="md-char-counter">{{ form.description }}</div>
+</div>

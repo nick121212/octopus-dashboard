@@ -1,0 +1,45 @@
+<md-content flex layout="column">
+    <md-content flex layout="row">
+        <md-input-container class="md-block" flex>
+            <label>{{fileUploadCtl.title}}</label>
+            <input readonly="readonly" ng-model="fileUploadCtl.url">
+            <md-progress-linear ng-show="fileUploadCtl.uploader.isUploading || fileUpload.isBusy" md-mode="{{fileUpload.isBusy?'Indeterminate':'determinate'}}"
+            value="{{fileUploadCtl.progress}}"></md-progress-linear>
+            <div ng-transclude></div>
+        </md-input-container>
+        <md-input-container>
+            <md-button class="md-icon-button" ng-disabled="fileUploadCtl.uploader.isUploading">
+                <md-tooltip>{{ fileUploadCtl.uploader.isUploading?'上传中':'添加文件' }}</md-tooltip>
+                <ng-md-icon icon="{{ fileUploadCtl.uploader.isUploading?'file_upload':'add'}}"></ng-md-icon>
+                <input ng-show="!fileUploadCtl.uploader.isUploading" style="position:absolute;top:0;line-height:200px;height:200px;" type="file"
+                nv-file-select="" uploader="fileUploadCtl.uploader" />
+            </md-button>
+            <md-button aria-label="展开数据" class="md-icon-button" ng-click="fileUploadCtl.showList()">
+                <ng-md-icon icon="{{fileUploadCtl.isShowList?'expand_less':'expand_more'}}"></ng-md-icon>
+            </md-button>
+        </md-input-container>
+    </md-content>
+
+    <md-content ng-cloak class="nga-fast nga-stagger-fast nga-fade md-whiteframe-2dp" flex layout="" ng-show="fileUploadCtl.isShowList">
+        <div layout="row" layout-wrap>
+            <md-card ng-repeat="tile in fileUploadCtl.clientData.datas">
+                <md-card-title>
+                    <md-card-title-media>
+                        <div class="md-media card-media">
+                            <img ng-src="{{tile.url | zoom:'-220x124'}}" alt="tile.mtime">
+                        </div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button aria-label="选择图片" class="md-icon-button" ng-click="fileUploadCtl.doSelect(tile)">
+                        <ng-md-icon ng-style="{fill:fileUploadCtl.url === tile.url?'red':''}" icon="{{fileUploadCtl.url === tile.url?'photo_size_select_actual':'photo_size_select_small'}}">
+                        </ng-md-icon>
+                    </md-button>
+                </md-card-actions>
+            </md-card>
+            <md-table-pagination class="md-table-pagination" flex md-limit="fileUploadCtl.queryData.limit" md-page="fileUploadCtl.queryData.page"
+            md-options="fileUploadCtl.rowSelect" md-on-paginate="fileUploadCtl.onPageChangeBind" md-total="{{fileUploadCtl.clientData.total}}">
+            </md-table-pagination>
+        </div>
+    </md-content>
+</md-content>

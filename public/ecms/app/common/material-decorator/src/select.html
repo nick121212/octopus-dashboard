@@ -1,0 +1,29 @@
+<md-input-container md-is-error="ngModel.$error && ngModel.$invalid"
+                    class="form-group md-block {{::form.htmlClass}} schema-form-select"
+                    sf-layout>
+    <label ng-show="::showTitle()">{{::form.title}}</label>
+    <md-select sf-field-model
+               name="{{ ::form.key|sfCamelKey }}"
+               schema-validate="form"
+               ng-model="$$value$$">
+        <md-optgroup ng-repeat-start="(key, opt) in form.titleMap"
+                     ng-if="opt.group && opt.group != optGroups[key-1].group"
+                     label="{{::opt.group}}"
+                     aria-label="{{::opt.group}}">
+            <md-option ng-repeat="(key, filtered) in form.titleMap"
+                       ng-if="!!filtered.disabled"
+                       ng-value="::filtered.value"
+                       aria-label="{{::filtered.name}}">{{::filtered.name}}
+            </md-option>
+        </md-optgroup>
+        <md-option ng-if="!opt.group"
+                   ng-value="::opt.value"
+                   ng-repeat-end>{{::opt.name}}
+        </md-option>
+    </md-select>
+
+    <div ng-messages="ngModel.$error">
+        <div sf-message ng-message></div>
+    </div>
+    <div class="md-char-counter">{{ form.description }}</div>
+</md-input-container>

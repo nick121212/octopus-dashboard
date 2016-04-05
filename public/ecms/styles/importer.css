@@ -1,0 +1,16 @@
+@import "../bower_components/angular-material-data-table/dist/md-data-table.css";
+@import "../bower_components/angular-material-icons/angular-material-icons.css";
+@import "../bower_components/angular-motion-sass/dist/angular-motion.css";
+@import "../bower_components/material-sidemenu/sidemenu.css";
+@import "loading.css";
+@import "../app/modules/passport/styles/passport.css";
+@import "../bower_components/angular-material/angular-material.css";
+@import "../bower_components/jsoneditor/dist/jsoneditor.css";
+@import "nga.all.css";
+.md-no-errors .md-errors-spacer,
+.no-errers .md-errors-spacer {
+  display: none;
+}
+gridmenu {
+  float: right;
+}

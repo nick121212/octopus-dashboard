@@ -1,0 +1,57 @@
+<h1 class="title">用户登录</h1>
+
+<div layout="row" layout-align="center center">
+    <div layout="column" flex-xs="90" flex="40">
+        <!--<form name="login_form" layout="column" sf-model="loginCtl.formData" sf-form="loginCtl.form" sf-schema="loginCtl.schema"
+        ng-submit="loginCtl.submit(login_form)"></form>-->
+
+        <form name="form" 
+              layout="column" 
+              flex 
+              sf-model="passportLoginController.formData"
+              sf-form="passportLoginController.form"
+              sf-schema="passportLoginController.schema"
+              ng-submit="passportLoginController.submit(form)">
+        </form>
+
+        <md-button ng-click="passportLoginController.submit(form)">
+            Login In
+        </md-button>
+
+        <!--<md-divider layout-margin></md-divider>-->
+
+        <!--<div class="lock-size" layout="row" layout-align="start center">
+            <md-fab-speed-dial md-open="user.open" md-direction="right" class="md-scale">
+                <md-fab-trigger>
+                    <md-button aria-label="menu" class="md-mini">
+                        <ng-md-icon icon="arrow_forward"></ng-md-icon>
+                    </md-button>
+                </md-fab-trigger>
+                <md-fab-actions>
+                    <md-button aria-label="find" class="md-mini">
+                        找回密码
+                    </md-button>
+                    <md-button aria-label="Facebook" class="md-mini">
+                        注册
+                    </md-button>
+                    <md-button aria-label="Google Hangout" class="md-mini">
+                        QQ
+                    </md-button>
+                    <md-button aria-label="Google Hangout" class="md-mini">
+                        weibo
+                    </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>-->
+        <!--<md-divider></md-divider>
+        <div layout="row">
+            <md-button ui-sref="account.forget_email">
+                找回密码
+            </md-button>
+            <span flex=""></span>
+            <md-button ui-sref="account.register">
+                用户注册
+            </md-button>
+        </div>-->
+    </div>
+</div>

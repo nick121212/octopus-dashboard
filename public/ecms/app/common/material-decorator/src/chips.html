@@ -1,0 +1,16 @@
+<md-input-container style="margin-top:0;" md-no-float="true" md-is-error="ngModel.$error && ngModel.$invalid"
+class="schema-form-chips md-block {{::form.htmlClass}}" sf-layout>
+    <!--<label ng-show="showTitle()" for="{{::form.key|sfCamelKey}}">{{::form.title}}</label>-->
+    <md-chips sf-field-model ng-model="$$value$$" class="no-errers" placeholder="{{form.title}}"
+    secondary-placeholder="{{form.secondaryTitle||''}}" md-max-chips="10" readonly="form.readonly" flex>
+        <md-chip-template>
+            <!-- should include an optional template from form.template -->
+            <strong ng-if="!form.template">{{$chip}}</strong>
+        </md-chip-template>
+    </md-chips>
+    <div class="md-errors-spacer"></div>
+    <div ng-messages="ngModel.$error" aria-live="assertive">
+        <div sf-message ng-message></div>
+    </div>
+    <div class="md-char-counter">{{ form.description }}</div>
+</md-input-container>

@@ -1,0 +1,9 @@
+<div class="schema-form-uploader" ng-class="form.htmlClass" flex>
+    <file-upload upload-path="form.uploadPath" title="form.title" sf-field-model sf-changed="form" schema-validate="form" ng-model="$$value$$"
+    filters="form.filters">
+        <div ng-messages="ngModel.$error" aria-live="assertive">
+            <div sf-message ng-message></div>
+        </div>
+        <div class="md-char-counter">{{ form.description }}</div>
+    </file-upload>
+</div>

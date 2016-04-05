@@ -1,0 +1,44 @@
+<div class="form-group {{form.htmlClass}} schema-form-select"
+     sf-layout>
+    <md-autocomplete ng-disabled="form.readonly"
+                     ng-model="$$value$$"
+                     sf-autocomplete
+                     sf-field-model="replaceAll"
+                     schema-validate="form"
+                     md-autoselect="true"
+                     md-selected-item="$$value$$"
+                     md-search-text="searchText"
+                     md-selected-item-change="form.onChange(item, form, model, modelArray, arrayIndex)"
+                     md-items="item in form.query(searchText,modelArray,arrayIndex,$parent)"
+                     md-item-text="item[form.textField]"
+                     md-floating-label="{{::form.title}}"
+                     md-menu-class="autocomplete-custom-template">
+        <md-item-template>
+            <div>
+                <span ng-if="!form.muti"
+                      md-highlight-text="searchText">
+                    {{ item[form.textField] }}
+                </span>
+                <span ng-if="form.muti"
+                      md-highlight-text="searchText"
+                      ng-repeat="key in form.muti">
+                    {{ !$first ? (form.prefix || '-'):'' }} {{ item[key] }}
+                </span>
+            </div>
+        </md-item-template>
+        <md-not-found>
+            没有记录
+        </md-not-found>
+    </md-autocomplete>
+    <md-input-container style="padding: 0;margin: 0;"
+                        name="{{form.key|sfCamelKey}}"
+                        md-is-error="!$root.isEmptyObject(ngModel.$error)"
+                        ng-model="$$value$$"
+                        sf-field-model
+                        schema-validate="form">
+        <div ng-messages="ngModel.$error" class="md-input-messages-animation">
+            <div sf-message ng-message></div>
+        </div>
+        <div class="md-char-counter">{{ form.description }}</div>
+    </md-input-container>
+</div>
